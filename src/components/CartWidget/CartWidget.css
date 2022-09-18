@@ -1,0 +1,6 @@
+.LogoCarrito {
+    height: 7vmin;  
+    pointer-events: none;
+    display: flex;
+    align-items: end;
+  }

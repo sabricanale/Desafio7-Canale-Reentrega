@@ -4,7 +4,7 @@
     text-align: center;
 }
 
-.detail {
+.detalle {
     margin-top: 3rem;
     margin-bottom: 3rem;
     width: 100%;
@@ -13,10 +13,26 @@
     
 }
 
+h6{
+    margin-top: 0.2rem;
+    color: gray;
+}
 .detail_image {
     height: 300px;
 }
 
 .content {
-    width: 100%;
+    
+    display: inline-flex;
+    text-align: center;
+    
+}
+.contador2 {
+    
+    
+    padding: auto;
+    margin-left:15rem;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
 }

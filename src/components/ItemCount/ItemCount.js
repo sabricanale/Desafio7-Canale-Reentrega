@@ -1,68 +1,38 @@
 import React from 'react'
 import './ItemCount.css'
-import { useState, useEffect } from 'react'
-import remera from '../Assets/RemeraNegra.jpg'
-import gorra from '../Assets/Gorra.webp'
-import llavero from '../Assets/Llavero.webp'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
+export const ItemCount = ({stock, setCount, count}) => {
 
-export const ItemCount = ({initial, stock, onAdd}) => {
-
-    const [count, setCount] = useState(parseInt(initial))
-
-    const restar = () => {setCount(count - 1)}
-    const sumar = () => {setCount(count + 1)}
-
-    useEffect(()=> {
-        setCount(parseInt(initial))
-    },[initial])
-
-
+    const onAdd = () => {
+        setCount(count + 1)
+    }
+    const onRemove = () => {
+        setCount(count - 1)
+    }    
+    const handleClick = ()=> {
+        alert(`Agregaste ${count} productos al carrito de compras` )
+      }
     return (
     <>
-
-<div className="cardContador">
+    <div className="cardContador">
     
-    <div class="card-body">
-        <div className="contador btn-group " role="group" aria-label="Basic outlined example">
-            <img src={remera} className='img-fluid remera '/>
-                <p className='text-center'>Remera <p>$2500</p></p>
-                <button className="btn btn-outline-primary" disabled = {count <= 1} onClick={restar}>-</button>
+        <div class="card-body">
+            <div className="contador btn-group " role="group" aria-label="Basic outlined example">           
+                
+                <button className="btn btn-outline-primary" disabled = {count <= 1} onClick={onRemove}> - </button>
                 <button className="btn btn-outline-primary">{count}</button>
-                <button className="btn btn-outline-primary" disabled = {count >= stock} onClick={sumar}>+</button>
+                <button className="btn btn-outline-primary" disabled = {count >= stock} onClick={onAdd}> + </button>  
                 <div>
-                    <button disabled={stock <= 0} onClick={() => onAdd(count)}>Agregar al carrito</button>
-                </div>    
-        </div> 
+                    <Link to={'./cart'} onClick={handleClick} >
+                        <button className="btn2 btn2-outline-primary">Agregar al carrito</button>
+                    </Link> 
+                </div>
+            
+            </div> 
+        </div>
     </div>
-
-    <div class="card-body ">
-        <div className="contador btn-group " role="group" aria-label="Basic outlined example">
-            <img src={gorra} className='img-fluid gorra'/>
-                <p className='text-center'>Gorra <p>$2000</p></p>
-                <button className="btn btn-outline-primary" disabled = {count <= 1} onClick={restar}>-</button>
-                <button className="btn btn-outline-primary">{count}</button>
-                <button className="btn btn-outline-primary" disabled = {count >= stock} onClick={sumar}>+</button>
-                <div>
-                    <button disabled={stock <= 0} onClick={() => onAdd(count)}>Agregar al carrito</button>
-                </div>    
-        </div> 
-    </div>
-    <div class="card-body ">
-        <div className="contador btn-group " role="group" aria-label="Basic outlined example">
-            <img src={llavero} className='img-fluid llavero'/>
-                <p className='text-center'>Llavero <p>$800</p></p>
-                <button className="btn btn-outline-primary" disabled = {count <= 1} onClick={restar}>-</button>
-                <button className="btn btn-outline-primary">{count}</button>
-                <button className="btn btn-outline-primary" disabled = {count >= stock} onClick={sumar}>+</button>
-                <div>
-                    <button disabled={stock <= 0} onClick={() => onAdd(count)}>Agregar al carrito</button>
-                </div>    
-        </div> 
-    </div>
-</div>
-
-
         
     </>
   )

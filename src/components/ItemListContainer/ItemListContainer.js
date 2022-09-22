@@ -1,6 +1,6 @@
 import React from 'react'
 import Title from '../Title/Title';
-import ItemCount from '../ItemCount/ItemCount';
+//import ItemCount from '../ItemCount/ItemCount';
 import ItemList from '../ItemList/ItemList';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
@@ -27,15 +27,18 @@ useEffect(()=>{
     }    
 }, [categoriaId])
 
+/*
 const onAdd = (quantify) =>{
-    alert(`Agregaste ${quantify} productos al carrito`)
-}
+    console.log(`Agregaste ${quantify} productos al carrito`)
+}*/
 
 return (
     <div>
         <Title greeting='Tienda de productos'/>
-        {/*<ItemCount initial = {1} stock = {5}  onAdd = {onAdd} /> */} 
+        
         <ItemList data = {data}/>     
+        {/* <ItemCount initial = {1} stock = {5}  onAdd = {onAdd} /> */}        
+        
         
     </div>
   )

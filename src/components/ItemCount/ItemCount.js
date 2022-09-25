@@ -1,43 +1,37 @@
-import React, { useState } from 'react'
-import './ItemCount.css'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import "./ItemCount.css";
 
-export const ItemCount = ({stock}) => {
+const ItemCount = ({ initial, stock, onAdd }) => {
+	const [count, setCount] = useState(parseInt(initial));
+	
+	const restar = () => {
+		setCount(count - 1);
+	};
 
-    const [count, setCount] = useState(0) 
-        
-    const onAdd = () => {
-        setCount(count + 1)
-    }
-    const onRemove = () => {
-        setCount(count - 1)
-    }    
-    const handleClick = ()=> {
-        
-        console.log(`Agregaste ${count} productos al carrito de compras` )
-      }
-    return (
-    <>
-    <div className="cardContador">
-    
-        <div class="card-body">
-            <div className="contador btn-group " role="group" aria-label="Basic outlined example">           
-                
-                <button className="btn btn-outline-primary" disabled = {count <= 1} onClick={onRemove}> - </button>
-                <button className="btn btn-outline-primary">{count}</button>
-                <button className="btn btn-outline-primary" disabled = {count >= stock} onClick={onAdd}> + </button>  
-                <div>
-                    <Link to={'./cart'} onClick={handleClick} >
-                        <button className="btn2 btn2-outline-primary">Agregar al carrito</button>
-                    </Link> 
-                </div>
-            
-            </div> 
-        </div>
-    </div>
-        
-    </>
-  )
-}
+	const sumar = () => {
+		setCount(count + 1);
+	};
 
-export default ItemCount
+	useEffect(() => {
+		setCount(parseInt(initial));
+	}, [initial]);
+
+	return (
+		<div className="cardContador">
+    		<div class="card-body">
+				<div className="contador btn-group " role="group" aria-label="Basic outlined example">           
+			
+					<button className="btn btn-outline-primary" disabled = {count <= 1} onClick={restar}> - </button>
+					<button className="btn btn-outline-primary">{count}</button>
+					<button className="btn btn-outline-primary" disabled = {count >= stock} onClick={sumar}> + </button>  
+					<div>
+						<button className="btn2 btn2-outline-primary" disabled={stock <= 0} onClick={() => onAdd(count)}>Agregar al carrito</button>
+					</div>
+
+				</div> 
+			</div>
+		</div>
+	);
+};
+
+export default ItemCount;

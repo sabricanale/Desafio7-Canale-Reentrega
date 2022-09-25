@@ -1,14 +1,17 @@
 import React from 'react'
 import './CartWidget.css'
 import logoCarrito from '../Assets/Carrito.png'
- 
+import { useCartContext } from '../../Context/CartContext' 
+
 const CartWidget = () => {
+const { totalProducts } = useCartContext();
 
-  return (
-    <div>
-        <img src={logoCarrito} className='LogoCarrito'/>
-    </div>
-  )
-}
+	return (
+		<>
+			<img src={logoCarrito} className='LogoCarrito'/>
+			<span>{totalProducts() || ""}</span>
+		</>
+	);
+};
 
-export default CartWidget
+export default CartWidget;

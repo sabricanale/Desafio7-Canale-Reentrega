@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './ItemCount.css'
 import { Link } from 'react-router-dom'
 
-export const ItemCount = ({stock, setCount, count}) => {
+export const ItemCount = ({stock}) => {
 
+    const [count, setCount] = useState(0) 
+        
     const onAdd = () => {
         setCount(count + 1)
     }
@@ -11,7 +13,8 @@ export const ItemCount = ({stock, setCount, count}) => {
         setCount(count - 1)
     }    
     const handleClick = ()=> {
-        alert(`Agregaste ${count} productos al carrito de compras` )
+        
+        console.log(`Agregaste ${count} productos al carrito de compras` )
       }
     return (
     <>

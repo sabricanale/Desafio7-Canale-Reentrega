@@ -25,8 +25,9 @@ const Cart = () => {
 			{cart.map((product) => (
 				<ItemCart key={product.id} product={product} />
 			))}
-			<p className="text-center">Total a pagar: {totalPrice()}</p>
-			
+			<div className="textTotal">
+				<p>Total a pagar: ${totalPrice()}</p>
+		</div>
 		</>
 	);
 };

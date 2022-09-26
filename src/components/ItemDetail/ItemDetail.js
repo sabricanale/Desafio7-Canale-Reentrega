@@ -27,7 +27,7 @@ export const ItemDetail = ({ data }) => {
                   	<h5>{data.description}</h5>
                   	<h6>{`(${data.stock} disponibles)`}</h6>
 					{goToCart ? (
-						<Link to="/cart"> Ir al carrito</Link>
+						<Link to="/cart"> <button>Terminar mi compra</button> </Link>
 					) : (
 						<div className='contador2'> 
 							<ItemCount initial={1} stock={data.stock} onAdd={onAdd} />
